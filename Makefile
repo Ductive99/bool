@@ -4,12 +4,13 @@ SRCDIR = src
 OBJDIR = build
 INCDIR = include
 
-SRCS = main.cpp
+SRCS = main.cpp \
+	   adder.cpp
 
 OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror -g3
 INCFLAGS = -I $(INCDIR)
 
 .PHONY: all clean fclean re
