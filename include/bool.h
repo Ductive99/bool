@@ -6,7 +6,7 @@
 /*   By: esouhail <ductive99.github.io>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:22:12 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/10 16:56:35 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/13 12:56:00 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void print_truth_table(std::string &formula);
 // ...
 
 // Tester functions
-void test_adder(void);
-
+void	test_adder(void);
+void	test_multiplier(void);
 
 #endif /* BOOL_H_ */

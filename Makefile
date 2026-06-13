@@ -5,7 +5,8 @@ OBJDIR = build
 INCDIR = include
 
 SRCS = main.cpp \
-	   adder.cpp
+	   adder.cpp \
+	   multiplier.cpp
 
 OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)
 

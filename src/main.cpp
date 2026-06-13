@@ -6,7 +6,7 @@
 /*   By: esouhail <ductive99.github.io>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:25:21 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/10 16:55:58 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/13 12:58:06 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int main(void) {
 	test_adder();
-	
+	test_multiplier();
+
 	return (0);
 }
