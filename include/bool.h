@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bool.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esouhail <ductive99.github.io>             +#+  +:+       +#+        */
+/*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:22:12 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/13 12:56:00 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/13 16:39:24 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void print_truth_table(std::string &formula);
 // ...
 
 // Tester functions
-void	test_adder(void);
-void	test_multiplier(void);
+void test_adder(void);
+void test_multiplier(void);
+void test_gray_code(void);
 
 #endif /* BOOL_H_ */
