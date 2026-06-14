@@ -6,7 +6,7 @@
 /*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:22:12 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/13 16:39:24 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/14 11:08:18 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <cstdint>
 #include <iostream>
 #include <string>
+#include <map>
 
 #define i32 int32_t
 #define u32 uint32_t
@@ -28,7 +29,7 @@ u32 multiplier(u32 a, u32 b);
 // Converts integer `n` to its Gray code equivalent.
 u32 gray_code(u32 n);
 // Evaluates a propositional formula in **Reverse Polish Notation**.
-bool eval_formula(std::string &formula);
+bool eval_formula(const std::string &formula);
 // Prints the truth table for a formula with variables `A-Z`
 void print_truth_table(std::string &formula);
 // ...
@@ -37,5 +38,6 @@ void print_truth_table(std::string &formula);
 void test_adder(void);
 void test_multiplier(void);
 void test_gray_code(void);
+void test_eval_formula(void);
 
 #endif /* BOOL_H_ */

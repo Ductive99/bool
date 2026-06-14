@@ -7,7 +7,9 @@ INCDIR = include
 SRCS = main.cpp \
 	   adder.cpp \
 	   multiplier.cpp \
-	   gray_code.cpp
+	   gray_code.cpp \
+	   boolean_evaluation.cpp \
+	   rpn_utils.cpp
 
 OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)
 
