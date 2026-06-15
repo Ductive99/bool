@@ -6,29 +6,25 @@
 /*   By: esouhail <ductive99.github.io>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/14 11:00:17 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/14 11:02:53 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/14 11:56:59 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
-#include "bool.h"
 
 // RPN Operation Dispatcher
 
-static const std::map<char, void(*)(std::stack<bool>&)> operations = {
-    {'!', negation},
-    {'&', conjunction},
-    {'|', disjunction},
-    {'^', exclusive_disjunction},
-    {'>', material_condition},
-    {'=', equivalence},
+static const std::map<char, void (*)(std::stack<bool> &)> operations = {
+	{'!', negation},		   {'&', conjunction},
+	{'|', disjunction},		   {'^', exclusive_disjunction},
+	{'>', material_condition}, {'=', equivalence},
 };
 
 void eval_operation(std::stack<bool> &operands, const char op) {
-    auto it = operations.find(op);
-    if (it == operations.end())
-        throw InvalidOperandException();
-    it->second(operands);
+	auto it = operations.find(op);
+	if (it == operations.end())
+		throw InvalidOperandException();
+	it->second(operands);
 }
 
 // RPN Operations
