@@ -6,36 +6,43 @@
 /*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/13 16:42:10 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/14 11:47:20 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/15 22:50:33 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RPN.hpp"
 #include "bool.h"
-#include <exception>
-#include <iostream>
-#include <string>
 
 static void print_comparison(const std::string &formula, bool result);
 
 bool eval_formula(const std::string &formula) {
-	std::stack<bool> operands;
+	std::unique_ptr<ASTNode> root = build_ast(formula);
 
-	for (size_t i = 0; i < formula.size(); i++) {
-		char c = formula[i];
-		if (c == '0' || c == '1') {
-			operands.push(c - '0');
-		} else if (c == ' ') {
-			std::cout << "s";
-			continue;
-		} else
-			eval_operation(operands, c);
-	}
+	auto leaf = [](const ASTNode &n) -> bool {
+		if (n.type == NodeType::Const)
+			return n.value;
+		throw InvalidFormulaException();
+	};
 
-	if (operands.size() != 1)
-		throw TooManyOperandsException();
+	auto apply_not = [](bool v) -> bool { return !v; };
 
-	return operands.top();
+	auto apply_bin = [](NodeType t, bool l, bool r) -> bool {
+		switch (t) {
+		case NodeType::And:
+			return l & r;
+		case NodeType::Or:
+			return l | r;
+		case NodeType::Xor:
+			return l ^ r;
+		case NodeType::Implies:
+			return (!l) | r;
+		case NodeType::Iff:
+			return l == r;
+		default:
+			throw InvalidFormulaException();
+		}
+	};
+
+	return evaluate<bool>(root.get(), leaf, apply_not, apply_bin);
 }
 
 void test_eval_formula(void) {

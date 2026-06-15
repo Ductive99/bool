@@ -6,18 +6,19 @@
 /*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:22:12 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/14 11:08:18 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/15 22:50:08 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BOOL_H_
 #define BOOL_H_
 
+#include "ast.h"
 #include <bitset>
 #include <cstdint>
 #include <iostream>
-#include <string>
 #include <map>
+#include <string>
 
 #define i32 int32_t
 #define u32 uint32_t
