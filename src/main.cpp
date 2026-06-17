@@ -6,7 +6,7 @@
 /*   By: esouhail <ductive99.github.io>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:25:21 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/14 11:45:31 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/17 21:41:57 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int main(void) {
 	test_gray_code();
 	std::cout << "\n===      Eval Formula     ===\n";
 	test_eval_formula();
+	std::cout << "\n===   Print Truth Table   ===\n";
+	test_print_truth_table();
 
 	return (0);
 }

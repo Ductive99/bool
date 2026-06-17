@@ -6,7 +6,7 @@
 /*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:22:12 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/15 22:50:08 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/17 21:34:20 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ u32 gray_code(u32 n);
 // Evaluates a propositional formula in **Reverse Polish Notation**.
 bool eval_formula(const std::string &formula);
 // Prints the truth table for a formula with variables `A-Z`
-void print_truth_table(std::string &formula);
+void print_truth_table(const std::string &formula);
 // ...
 
 // Tester functions
@@ -40,5 +40,6 @@ void test_adder(void);
 void test_multiplier(void);
 void test_gray_code(void);
 void test_eval_formula(void);
+void test_print_truth_table(void);
 
 #endif /* BOOL_H_ */

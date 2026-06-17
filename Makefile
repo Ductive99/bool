@@ -9,6 +9,7 @@ SRCS = main.cpp \
 	   multiplier.cpp \
 	   gray_code.cpp \
 	   boolean_evaluation.cpp \
+	   truth_table.cpp
 
 OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)
 
