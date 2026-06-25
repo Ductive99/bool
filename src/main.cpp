@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esouhail <ductive99.github.io>             +#+  +:+       +#+        */
+/*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:25:21 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/17 21:41:57 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/25 10:31:09 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bool.h"
 
+
+// TODO: fix EOF input in interactive mode
 int main(void) {
 	std::cout << "\n===         Adder         ===\n";
 	test_adder();
@@ -23,6 +25,8 @@ int main(void) {
 	test_eval_formula();
 	std::cout << "\n===   Print Truth Table   ===\n";
 	test_print_truth_table();
+	std::cout << "\n===   Print Truth Table   ===\n";
+	test_negation_normal_form();
 
 	return (0);
 }

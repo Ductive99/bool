@@ -6,7 +6,7 @@
 /*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:22:12 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/17 21:34:20 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/19 01:36:45 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ u32 gray_code(u32 n);
 bool eval_formula(const std::string &formula);
 // Prints the truth table for a formula with variables `A-Z`
 void print_truth_table(const std::string &formula);
-// ...
+// Converts a propositional formula to its negation normal form
+std::string negation_normal_form(const std::string &formula);
 
 // Tester functions
 void test_adder(void);
@@ -41,5 +42,9 @@ void test_multiplier(void);
 void test_gray_code(void);
 void test_eval_formula(void);
 void test_print_truth_table(void);
+void test_negation_normal_form(void);
+
+// Utility functions
+std::unique_ptr<ASTNode> transform_to_nnf(const ASTNode* node);
 
 #endif /* BOOL_H_ */
