@@ -61,3 +61,4 @@ Testing/
 .cache/
 
 .vim
+.idea/
