@@ -6,7 +6,7 @@
 /*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 13:12:01 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/25 10:28:23 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/26 20:08:02 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,24 @@ std::unique_ptr<ASTNode> transform_to_nnf(const ASTNode *node) {
         return transform_to_nnf(newf.get());
 	}
 
+	/*
+	 * (A <=> B)	<=>	(A => B) & (B => A)
+	 * 				<=>	(!A | B) & (A | !B)
+	 */
     if (node->type == NodeType::Iff) {
-		// TODO: implement equivalence conversion
+    	auto left = node->left->clone();
+    	auto tmp_left	= node->left->clone();
+		auto not_left = ASTNode::make_unary(NodeType::Not, std::move(tmp_left));
+		auto right = node->right->clone();
+    	auto tmp_right = node->right->clone();
+		auto not_right = ASTNode::make_unary(NodeType::Not, std::move(tmp_right));
+		auto new_left = ASTNode::make_binary(NodeType::Or, std::move(not_left), std::move(right));
+		auto new_right = ASTNode::make_binary(NodeType::Or, std::move(left), std::move(not_right));
+		auto new_node = ASTNode::make_binary(NodeType::And, std::move(new_left), std::move(new_right));
+		return transform_to_nnf(new_node.get());
     }
     
-	// TODO: use De Morgan's laws and distrubitivity
+	// TODO: use De Morgan's laws and distributivity
 
 	
 	auto left_nnf  = transform_to_nnf(node->left.get());
@@ -126,6 +139,7 @@ void	test_negation_normal_form(void)
 				std::getline(std::cin, s);
 				if (s == "n")
 					break;
+				print_truth_table(s);
 				print_truth_table(negation_normal_form(s));
 			} catch (const std::exception &e) {
 				std::cout << e.what() << std::endl;

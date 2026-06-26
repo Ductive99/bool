@@ -6,7 +6,7 @@
 /*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:25:21 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/25 10:31:09 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/26 19:48:35 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main(void) {
 	test_eval_formula();
 	std::cout << "\n===   Print Truth Table   ===\n";
 	test_print_truth_table();
-	std::cout << "\n===   Print Truth Table   ===\n";
+	std::cout << "\n===  Negation Normal Form ===\n";
 	test_negation_normal_form();
 
 	return (0);
