@@ -10,7 +10,8 @@ SRCS = main.cpp \
 	   gray_code.cpp \
 	   boolean_evaluation.cpp \
 	   truth_table.cpp \
-	   negation_normal_form.cpp
+	   negation_normal_form.cpp \
+	   utils_to_rpn.cpp
 
 OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)
 

@@ -6,7 +6,7 @@
 /*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:22:12 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/19 01:36:45 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/28 20:13:12 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 #define i32 int32_t
 #define u32 uint32_t
 
+#define INTERACTIVE_MODE 1
+#define NORMAL_MODE 0
+ 
 // Adds `a + b` using only bitwise ops (`&`, `|`, `^`, `<<`, `>>`).
 u32 adder(u32 a, u32 b);
 // Multiplies `a * b` using only bitwise ops.
@@ -46,5 +49,6 @@ void test_negation_normal_form(void);
 
 // Utility functions
 std::unique_ptr<ASTNode> transform_to_nnf(const ASTNode* node);
+std::string	to_rpn(const ASTNode *node);
 
 #endif /* BOOL_H_ */
