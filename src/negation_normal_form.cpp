@@ -6,7 +6,7 @@
 /*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 13:12:01 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/28 20:14:52 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/28 20:46:54 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,50 +122,4 @@ std::unique_ptr<ASTNode> transform_to_nnf(const ASTNode *node) {
 	auto right_nnf = transform_to_nnf(node->right.get());
 	return ASTNode::make_binary(node->type, std::move(left_nnf),
 								std::move(right_nnf));
-}
-
-static void compare_truth_table_rpn_nnf(std::string s, int mode = NORMAL_MODE);
-
-void test_negation_normal_form(void) {
-	std::string answer;
-	std::cout << "Enter interactive mode ? (y/n) ";
-	std::cin >> answer;
-	std::cin.ignore();
-
-	if (answer == "n") {
-		compare_truth_table_rpn_nnf("AB&!");
-		compare_truth_table_rpn_nnf("AB=");
-		compare_truth_table_rpn_nnf("AB|C=!D>");
-	} else {
-		std::cout << "p.s. enter 'n' to quit\n";
-		while (1) {
-			std::string s;
-
-			std::cout << "> ";
-			std::getline(std::cin, s);
-			if (std::cin.eof()) {
-				std::cout << std::endl;
-				return;
-			}
-			if (s == "n")
-				break;
-			compare_truth_table_rpn_nnf(s, INTERACTIVE_MODE);
-		}
-	}
-}
-
-static void compare_truth_table_rpn_nnf(std::string s, int mode) {
-	std::string nnf;
-	try {
-		nnf = negation_normal_form(s);
-	} catch (const std::exception &e) {
-		std::cout << e.what() << std::endl;
-		if (mode == INTERACTIVE_MODE)
-			std::cout << "p.s. enter 'n' to quit\n";
-		return;
-	}
-	std::cout << s << std::endl;
-	print_truth_table(s);
-	std::cout << std::endl;
-	print_truth_table(nnf);
 }

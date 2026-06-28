@@ -6,12 +6,11 @@
 /*   By: esouhail <ductive99.github.io>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 23:49:40 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/17 21:41:48 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/28 20:44:18 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bool.h"
-#include <set>
 
 void collect_variables(const ASTNode *node, std::set<char> &vars) {
 	if (!node)
@@ -80,31 +79,5 @@ void print_truth_table(const std::string &formula) {
 
 		bool result = eval_with_assignment(root.get(), assignment);
 		std::cout << "| " << result << " |\n";
-	}
-}
-
-void test_print_truth_table(void) {
-	std::string answer;
-	std::cout << "Enter interactive mode ? (y/n) ";
-	std::cin >> answer;
-	std::cin.ignore();
-
-	if (answer == "n") {
-		print_truth_table("AB&C|");
-	} else {
-		std::cout << "p.s. enter 'n' to quit\n";
-		while (1) {
-			try {
-				std::string s;
-
-				std::getline(std::cin, s);
-				if (s == "n")
-					break;
-				print_truth_table(s);
-			} catch (const std::exception &e) {
-				std::cout << e.what() << std::endl;
-				std::cout << "p.s. enter 'n' to quit\n";
-			}
-		}
 	}
 }

@@ -6,14 +6,12 @@
 /*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:25:21 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/26 19:48:35 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/28 20:51:38 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bool.h"
 
-
-// TODO: fix EOF input in interactive mode
 int main(void) {
 	std::cout << "\n===         Adder         ===\n";
 	test_adder();
