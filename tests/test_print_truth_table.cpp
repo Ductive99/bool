@@ -6,19 +6,14 @@
 /*   By: esouhail <ductive99.github.io>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/28 20:43:04 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/28 21:08:57 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/29 13:21:03 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bool.h"
 
-void test_print_truth_table(void) {
-	std::string answer;
-	std::cout << "Enter interactive mode ? (y/n) ";
-	std::cin >> answer;
-	std::cin.ignore();
-
-	if (answer == "n") {
+void test_print_truth_table(int mode) {
+	if (mode == NORMAL_MODE) {
 		std::string s = "AB&C|";
 		std::cout << s << std::endl;
 		print_truth_table(s);
@@ -34,10 +29,10 @@ void test_print_truth_table(void) {
 
 				std::cout << "> ";
 				std::getline(std::cin, s);
-				if (std::cin.eof())
-				{
+				if (std::cin.eof()) {
 					std::cout << std::endl;
-					return ;
+					std::cin.clear();
+					return;
 				}
 				if (s == "n")
 					break;

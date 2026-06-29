@@ -6,7 +6,7 @@
 /*   By: esouhail <ductive99.github.io>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/28 20:45:56 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/28 20:47:33 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/29 13:20:35 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,8 @@
 
 static void compare_truth_table_rpn_nnf(std::string s, int mode = NORMAL_MODE);
 
-void test_negation_normal_form(void) {
-	std::string answer;
-	std::cout << "Enter interactive mode ? (y/n) ";
-	std::cin >> answer;
-	std::cin.ignore();
-
-	if (answer == "n") {
+void test_negation_normal_form(int mode) {
+	if (mode == NORMAL_MODE) {
 		compare_truth_table_rpn_nnf("AB&!");
 		compare_truth_table_rpn_nnf("AB=");
 		compare_truth_table_rpn_nnf("AB|C=!D>");
@@ -33,6 +28,7 @@ void test_negation_normal_form(void) {
 			std::getline(std::cin, s);
 			if (std::cin.eof()) {
 				std::cout << std::endl;
+				std::cin.clear();
 				return;
 			}
 			if (s == "n")
@@ -55,5 +51,6 @@ static void compare_truth_table_rpn_nnf(std::string s, int mode) {
 	std::cout << s << std::endl;
 	print_truth_table(s);
 	std::cout << std::endl;
+	std::cout << nnf << std::endl;
 	print_truth_table(nnf);
 }

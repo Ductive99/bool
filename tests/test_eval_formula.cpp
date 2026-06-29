@@ -6,7 +6,7 @@
 /*   By: esouhail <ductive99.github.io>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/28 20:40:12 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/28 20:42:52 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/06/29 13:20:28 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,8 @@
 
 static void print_comparison(const std::string &formula, bool result);
 
-void test_eval_formula(void) {
-	std::string answer;
-	std::cout << "Enter interactive mode ? (y/n) ";
-	std::cin >> answer;
-	std::cin.ignore();
-
-	if (answer == "n") {
+void test_eval_formula(int mode) {
+	if (mode == NORMAL_MODE) {
 		print_comparison("10&", false);
 		print_comparison("10|", true);
 		print_comparison("11>", true);
@@ -33,10 +28,10 @@ void test_eval_formula(void) {
 				std::string s;
 
 				std::getline(std::cin, s);
-				if (std::cin.eof())
-				{
+				if (std::cin.eof()) {
 					std::cout << std::endl;
-					return ;
+					std::cin.clear();
+					return;
 				}
 				if (s == "n")
 					break;
