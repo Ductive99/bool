@@ -6,18 +6,22 @@
 /*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:25:21 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/29 13:20:09 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/07/02 13:48:32 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bool.h"
+#include "tests.h"
 
 static void print_banner(const std::string &txt);
 
 int main(void) {
 	std::vector<TestCase> interactive_test_funcs = {
-		REGISTER_FUNC(test_eval_formula), REGISTER_FUNC(test_print_truth_table),
-		REGISTER_FUNC(test_negation_normal_form)};
+		REGISTER_FUNC(test_eval_formula),
+		REGISTER_FUNC(test_print_truth_table),
+		REGISTER_FUNC(test_negation_normal_form),
+		REGISTER_FUNC(test_conjunctive_normal_form)
+	};
 
 	// Non-interactive tests
 	print_banner("test_adder");

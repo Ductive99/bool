@@ -6,7 +6,7 @@
 /*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 04:42:22 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/15 22:52:15 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/07/02 19:57:28 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ struct ASTNode {
 		return node;
 	}
 
+
 	std::unique_ptr<ASTNode> clone() const {
 		auto node	 = std::make_unique<ASTNode>();
 		node->type	 = type;
@@ -218,6 +219,14 @@ T evaluate(const ASTNode *node, const LeafFn &leaf, const NotFn &apply_not,
 	T l = evaluate<T>(node->left.get(), leaf, apply_not, apply_bin);
 	T r = evaluate<T>(node->right.get(), leaf, apply_not, apply_bin);
 	return apply_bin(node->type, l, r);
+}
+
+inline std::unique_ptr<ASTNode> make_and(std::unique_ptr<ASTNode> left, std::unique_ptr<ASTNode> right) {
+    	return ASTNode::make_binary(NodeType::And, std::move(left), std::move(right));
+}
+
+inline std::unique_ptr<ASTNode> make_or(std::unique_ptr<ASTNode> left, std::unique_ptr<ASTNode> right) {
+	return ASTNode::make_binary(NodeType::Or, std::move(left), std::move(right));
 }
 
 #endif /* AST_H_ */

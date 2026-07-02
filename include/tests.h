@@ -6,7 +6,7 @@
 /*   By: esouhail <ductive99.github.io>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/28 20:31:55 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/29 13:19:47 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/07/02 13:43:30 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ void test_gray_code();
 void test_eval_formula(int mode);
 void test_print_truth_table(int mode);
 void test_negation_normal_form(int mode);
+void test_conjunctive_normal_form(int mode);
 
 #endif /* TESTS_H_ */

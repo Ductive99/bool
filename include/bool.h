@@ -6,7 +6,7 @@
 /*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:22:12 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/28 20:44:06 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/07/02 13:45:24 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@ bool eval_formula(const std::string &formula);
 void print_truth_table(const std::string &formula);
 // Converts a propositional formula to its negation normal form
 std::string negation_normal_form(const std::string &formula);
-
+// Converts a propositional formula to its conjuctive normal form
+std::string conjunctive_normal_form(const std::string &formula);
 
 // Utility functions
 std::unique_ptr<ASTNode> transform_to_nnf(const ASTNode* node);
+std::unique_ptr<ASTNode> transform_nnf_to_cnf(const ASTNode *node);
 std::string	to_rpn(const ASTNode *node);
 
 #endif /* BOOL_H_ */
