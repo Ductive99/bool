@@ -6,7 +6,7 @@
 /*   By: esouhail <ductive99.github.io>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/02 13:38:43 by esouhail          #+#    #+#             */
-/*   Updated: 2026/07/02 13:47:28 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/07/03 17:49:31 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@ static void compare_truth_table_rpn(const std::string s, int mode = NORMAL_MODE)
 void test_conjunctive_normal_form(int mode) {
 	if (mode == NORMAL_MODE) {
 		compare_truth_table_rpn("AB&!");
-		compare_truth_table_rpn("AB=");
-		compare_truth_table_rpn("AB|C=!D>");
+		compare_truth_table_rpn("AB|!");
+		compare_truth_table_rpn("AB|C&");
+		compare_truth_table_rpn("AB|C|D|");
+		compare_truth_table_rpn("AB&C&D&");
+		compare_truth_table_rpn("AB&!C!|");
+		compare_truth_table_rpn("AB|!C!&");
 	} else {
 		std::cout << "p.s. enter 'n' to quit\n";
 		while (1) {
@@ -48,6 +52,7 @@ static void compare_truth_table_rpn(const std::string s, int mode) {
 			std::cout << "p.s. enter 'n' to quit\n";
 		return;
 	}
+	std::cout << ">>>" << std::endl;
 	std::cout << s << std::endl;
 	print_truth_table(s);
 	std::cout << std::endl;
