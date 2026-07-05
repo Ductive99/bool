@@ -6,7 +6,7 @@
 /*   By: esouhail <ductive99.github.io>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 12:48:36 by esouhail          #+#    #+#             */
-/*   Updated: 2026/07/02 20:14:47 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/07/05 20:12:02 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,54 +22,40 @@ std::string conjunctive_normal_form(const std::string &formula) {
 	return to_rpn(cnf.get());
 }
 
+std::unique_ptr<ASTNode> distribute_or(std::unique_ptr<ASTNode> L,
+									   std::unique_ptr<ASTNode> R) {
+	if (L->type == NodeType::And) {
+		auto left  = distribute_or(L->left->clone(), R->clone());
+		auto right = distribute_or(L->right->clone(), R->clone());
+		return make_and(std::move(left), std::move(right));
+	}
+	if (R->type == NodeType::And) {
+		auto left  = distribute_or(L->clone(), R->left->clone());
+		auto right = distribute_or(L->clone(), R->right->clone());
+		return make_and(std::move(left), std::move(right));
+	}
+	return ASTNode::make_binary(NodeType::Or, std::move(L), std::move(R));
+	return make_or(std::move(L), std::move(R));
+}
+
 std::unique_ptr<ASTNode> transform_nnf_to_cnf(const ASTNode *node) {
 	if (!node)
 		throw InvalidFormulaException();
 
-	if (arity(node->type) < 2)
+	if (node->is_leaf() || node->type == NodeType::Not)
 		return node->clone();
 
-	if (node->type == NodeType::Or) {
-		const ASTNode *left_child  = node->left.get();
-		const ASTNode *right_child = node->right.get();
-		if (!left_child || !right_child)
-			throw InvalidFormulaException();
-
-		if (left_child->type == NodeType::And && arity(right_child->type) < 2) {
-			auto new_node = make_and(
-				make_or(left_child->left->clone(), right_child->clone()),
-				make_or(left_child->right->clone(), right_child->clone()));
-			return transform_nnf_to_cnf(new_node.get());
-		}
-
-		if (arity(left_child->type) < 2 && right_child->type == NodeType::And) {
-			auto new_node = make_and(
-				make_or(left_child->left->clone(), right_child->left->clone()),
-				make_or(left_child->left->clone(),
-						right_child->right->clone()));
-			return transform_nnf_to_cnf(new_node.get());
-		}
-		if (arity(left_child->type) < 2)
-			return (node->clone());
-	}
-
 	if (node->type == NodeType::And) {
-		const ASTNode *child = node->left.get();
-		if (!child)
-			throw InvalidFormulaException();
-
-		if (child->type == NodeType::And && arity(node->right->type) < 2) {
-			auto new_node =
-				make_and(child->left->clone(),
-						 make_and(child->right->clone(), node->right->clone()));
-			return transform_nnf_to_cnf(new_node.get());
-		}
-
-		if (arity(child->type) < 2)
-			return node->clone();
+		auto left  = transform_nnf_to_cnf(node->left.get());
+		auto right = transform_nnf_to_cnf(node->right.get());
+		return make_and(std::move(left), std::move(right));
 	}
 
-	return ASTNode::make_binary(node->type,
-								transform_nnf_to_cnf(node->left.get()),
-								transform_nnf_to_cnf(node->right.get()));
+	if (node->type == NodeType::Or) {
+		auto left  = transform_nnf_to_cnf(node->left.get());
+		auto right = transform_nnf_to_cnf(node->right.get());
+		return distribute_or(std::move(left), std::move(right));
+	}
+
+	throw InvalidFormulaException();
 }
