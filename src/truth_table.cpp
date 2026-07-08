@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   truth_table.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esouhail <ductive99.github.io>             +#+  +:+       +#+        */
+/*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 23:49:40 by esouhail          #+#    #+#             */
-/*   Updated: 2026/06/28 20:44:18 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/07/08 20:47:10 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void print_truth_table(const std::string &formula) {
 
 	std::set<char> var_set;
 	collect_variables(root.get(), var_set);
-	std::vector<char> vars(var_set.begin(), var_set.end());
+	vector<char> vars(var_set.begin(), var_set.end());
 	int				  n = vars.size();
 
 	for (char v : vars)

@@ -14,6 +14,7 @@ SRCS = main.cpp \
 	   negation_normal_form.cpp \
 	   conjunctive_normal_form.cpp \
 	   sat.cpp \
+	   powerset.cpp \
 	   utils_to_rpn.cpp
 
 TEST_SRCS = $(TESTDIR)/test_adder.cpp \
@@ -23,7 +24,8 @@ TEST_SRCS = $(TESTDIR)/test_adder.cpp \
 	   $(TESTDIR)/test_print_truth_table.cpp \
 	   $(TESTDIR)/test_negation_normal_form.cpp \
 	   $(TESTDIR)/test_conjunctive_normal_form.cpp \
-	   $(TESTDIR)/test_sat.cpp
+	   $(TESTDIR)/test_sat.cpp \
+	   $(TESTDIR)/test_powerset.cpp
 
 OBJS = $(SRCS:%.cpp=$(OBJDIR)/src/%.o)
 TEST_OBJS = $(TEST_SRCS:$(TESTDIR)/%.cpp=$(OBJDIR)/tests/%.o)

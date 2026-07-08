@@ -6,7 +6,7 @@
 /*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:25:21 by esouhail          #+#    #+#             */
-/*   Updated: 2026/07/08 18:01:43 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/07/08 20:47:48 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@
 static void print_banner(const std::string &txt);
 
 int main(void) {
-	std::vector<TestCase> interactive_test_funcs = {
+	vector<TestCase> interactive_test_funcs = {
 		REGISTER_FUNC(test_eval_formula),
 		REGISTER_FUNC(test_print_truth_table),
 		REGISTER_FUNC(test_negation_normal_form),
 		REGISTER_FUNC(test_conjunctive_normal_form),
-		REGISTER_FUNC(test_sat)
+		REGISTER_FUNC(test_sat),
+		REGISTER_FUNC(test_powerset)
 	};
 
 	// Non-interactive tests

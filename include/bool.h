@@ -6,7 +6,7 @@
 /*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:22:12 by esouhail          #+#    #+#             */
-/*   Updated: 2026/07/08 17:58:54 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/07/08 20:27:21 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 
 #define INTERACTIVE_MODE 1
 #define NORMAL_MODE		 0
+#define vector			 std::vector
 
 // Adds `a + b` using only bitwise ops (`&`, `|`, `^`, `<<`, `>>`).
 u32 adder(u32 a, u32 b);
@@ -45,6 +46,9 @@ std::string conjunctive_normal_form(const std::string &formula);
 // Checks if there's a combination of true and false for which the formula
 // evaluates to true
 bool sat(const std::string &formula);
+// Returns all possible subsets from a given set
+//vector<vector<i32>> powerset(vector<i32>& set);
+vector<vector<i32>> powerset(vector<i32> &set);
 
 // Utility functions
 std::unique_ptr<ASTNode> transform_to_nnf(const ASTNode *node);

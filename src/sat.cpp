@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esouhail <ductive99.github.io>             +#+  +:+       +#+        */
+/*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 15:26:49 by esouhail          #+#    #+#             */
-/*   Updated: 2026/07/08 18:17:13 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/07/08 20:47:05 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ bool sat(const std::string &formula) {
 	std::unique_ptr<ASTNode> root = build_ast(formula);
 	std::set<char>			 var_set;
 	collect_variables(root.get(), var_set);
-	std::vector<char> vars(var_set.begin(), var_set.end());
+	vector<char> vars(var_set.begin(), var_set.end());
 	int				  n = vars.size();
 
 	for (int i = 0; i < (1 << n); i++) {
