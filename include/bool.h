@@ -6,7 +6,7 @@
 /*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 15:22:12 by esouhail          #+#    #+#             */
-/*   Updated: 2026/07/08 20:27:21 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/07/11 14:21:14 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,18 @@
 #include <cstdint>
 #include <iostream>
 #include <map>
+#include <memory.h>
 #include <set>
 #include <string>
+#include <unordered_set>
 
 #define i32 int32_t
 #define u32 uint32_t
 
 #define INTERACTIVE_MODE 1
 #define NORMAL_MODE		 0
-#define vector			 std::vector
+
+using std::vector;
 
 // Adds `a + b` using only bitwise ops (`&`, `|`, `^`, `<<`, `>>`).
 u32 adder(u32 a, u32 b);
@@ -47,8 +50,9 @@ std::string conjunctive_normal_form(const std::string &formula);
 // evaluates to true
 bool sat(const std::string &formula);
 // Returns all possible subsets from a given set
-//vector<vector<i32>> powerset(vector<i32>& set);
 vector<vector<i32>> powerset(vector<i32> &set);
+// Evaluates formula using set theory logic from the given sets
+vector<i32> eval_set(const std::string &formula, vector<vector<i32>> &set);
 
 // Utility functions
 std::unique_ptr<ASTNode> transform_to_nnf(const ASTNode *node);

@@ -6,7 +6,7 @@
 /*   By: esouhail <esouhail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:25:21 by esouhail          #+#    #+#             */
-/*   Updated: 2026/07/08 20:47:48 by esouhail         ###   ########.fr       */
+/*   Updated: 2026/07/11 13:02:56 by esouhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int main(void) {
 		REGISTER_FUNC(test_negation_normal_form),
 		REGISTER_FUNC(test_conjunctive_normal_form),
 		REGISTER_FUNC(test_sat),
-		REGISTER_FUNC(test_powerset)
+		REGISTER_FUNC(test_powerset),
+		REGISTER_FUNC(test_eval_set)
 	};
 
 	// Non-interactive tests
